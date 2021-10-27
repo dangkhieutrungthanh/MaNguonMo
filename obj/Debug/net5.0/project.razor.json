@@ -15639,6 +15639,16 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Users\\KHIEU LOAN\\Desktop\\dotnet\\Views\\HelloWorld\\Index.cshtml",
+      "TargetPath": "Views\\HelloWorld\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\KHIEU LOAN\\Desktop\\dotnet\\Views\\HelloWorld\\Welcome.cshtml",
+      "TargetPath": "Views\\HelloWorld\\Welcome.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\KHIEU LOAN\\Desktop\\dotnet\\Views\\Home\\Privacy.cshtml",
       "TargetPath": "Views\\Home\\Privacy.cshtml",
       "FileKind": "mvc"

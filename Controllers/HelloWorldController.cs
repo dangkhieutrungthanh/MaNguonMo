@@ -7,13 +7,16 @@ namespace dotnet.Controllers
     {
 
 
-        public string Welcome(string name, int numTimes = 1)
+        public IActionResult Index()
         {
-            return HtmlEncoder.Default.Encode($"Hello {name}, NumTimes is: {numTimes}");
+            return View();
         }
-        public string Index()
+        public IActionResult Welcome(string name, int numTimes = 1)
         {
-            return "This is my default action...";
+            ViewData["Message"] = "Hello " + name;
+            ViewData["NumTimes"] = numTimes;
+
+            return View();
         }
 
     }
