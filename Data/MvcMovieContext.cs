@@ -13,5 +13,13 @@ namespace dotnet.Data{
         }
 
         public DbSet<dotnet.Models.Movie> Movie { get; set; }
+
+        public DbSet<dotnet.Models.Student> Student { get; set; }
+
+        public DbSet<dotnet.Models.Person> Person { get; set; }
+
+        public DbSet<dotnet.Models.Employee> Employee { get; set; }
+
+        public DbSet<dotnet.Models.Product> Product { get; set; }
     }
 }

@@ -1,0 +1,42 @@
+@model IEnumerable<dotnet.Models.Employee>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Danh sách</h1>
+
+<p>
+    <a asp-action="Create">Tạo mới</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.EmployeeName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EmployeePhoneNumber)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EmployeeName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EmployeePhoneNumber)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.EmployeeId">Chỉnh sửa</a> |
+                    <a asp-action="Details" asp-route-id="@item.EmployeeId">Chi tiết</a> |
+                    <a asp-action="Delete" asp-route-id="@item.EmployeeId">Xóa</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
