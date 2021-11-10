@@ -66,7 +66,7 @@ namespace dotnet.Controllers
         }
 
         // GET: Student/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+        public async Task<IActionResult> Edit(string id)
         {
             if (id == null)
             {
@@ -137,7 +137,7 @@ namespace dotnet.Controllers
         // POST: Student/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public async Task<IActionResult> DeleteConfirmed(string id)
         {
             var student = await _context.Student.FindAsync(id);
             _context.Student.Remove(student);
