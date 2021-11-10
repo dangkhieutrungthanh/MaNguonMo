@@ -9,7 +9,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
-
+using dotnet.Data;
 namespace dotnet
 {
     public class Startup
@@ -28,18 +28,7 @@ namespace dotnet
             services.AddControllersWithViews();
 
             services.AddDbContext<MvcMovieContext>(options =>
-            {
-                var connectionString = Configuration.GetConnectionString("MvcMovieContext");
-
-                if (Environment.IsDevelopment())
-                {
-                    options.UseSqlite(connectionString);
-                }
-                else
-                {
-                    options.UseSqlServer(connectionString);
-                }
-            });
+            options.UseSqlite(Configuration.GetConnectionString("MvcMovieContext")));
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

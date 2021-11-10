@@ -4,12 +4,13 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
+using dotnet.Data;
 
 namespace dotnet.Migrations
 {
     [DbContext(typeof(MvcMovieContext))]
-    [Migration("20211103062707_Create_Table_Movie")]
-    partial class Create_Table_Movie
+    [Migration("20211108101144_Create-Table")]
+    partial class CreateTable
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
