@@ -172,16 +172,6 @@ C:\Users\KHIEU LOAN\Desktop\dotnet\obj\Debug\net5.0\Razor\Views\Movie\Delete.csh
 C:\Users\KHIEU LOAN\Desktop\dotnet\obj\Debug\net5.0\Razor\Views\Movie\Details.cshtml.g.cs
 C:\Users\KHIEU LOAN\Desktop\dotnet\obj\Debug\net5.0\Razor\Views\Movie\Edit.cshtml.g.cs
 C:\Users\KHIEU LOAN\Desktop\dotnet\obj\Debug\net5.0\Razor\Views\Movie\Index.cshtml.g.cs
-C:\Users\KHIEU LOAN\Desktop\dotnet\obj\Debug\net5.0\Razor\Views\Student\Create.cshtml.g.cs
-C:\Users\KHIEU LOAN\Desktop\dotnet\obj\Debug\net5.0\Razor\Views\Student\Delete.cshtml.g.cs
-C:\Users\KHIEU LOAN\Desktop\dotnet\obj\Debug\net5.0\Razor\Views\Student\Details.cshtml.g.cs
-C:\Users\KHIEU LOAN\Desktop\dotnet\obj\Debug\net5.0\Razor\Views\Student\Edit.cshtml.g.cs
-C:\Users\KHIEU LOAN\Desktop\dotnet\obj\Debug\net5.0\Razor\Views\Student\Index.cshtml.g.cs
-C:\Users\KHIEU LOAN\Desktop\dotnet\obj\Debug\net5.0\Razor\Views\Person\Create.cshtml.g.cs
-C:\Users\KHIEU LOAN\Desktop\dotnet\obj\Debug\net5.0\Razor\Views\Person\Delete.cshtml.g.cs
-C:\Users\KHIEU LOAN\Desktop\dotnet\obj\Debug\net5.0\Razor\Views\Person\Details.cshtml.g.cs
-C:\Users\KHIEU LOAN\Desktop\dotnet\obj\Debug\net5.0\Razor\Views\Person\Edit.cshtml.g.cs
-C:\Users\KHIEU LOAN\Desktop\dotnet\obj\Debug\net5.0\Razor\Views\Person\Index.cshtml.g.cs
 C:\Users\KHIEU LOAN\Desktop\dotnet\obj\Debug\net5.0\Razor\Views\Employee\Create.cshtml.g.cs
 C:\Users\KHIEU LOAN\Desktop\dotnet\obj\Debug\net5.0\Razor\Views\Employee\Delete.cshtml.g.cs
 C:\Users\KHIEU LOAN\Desktop\dotnet\obj\Debug\net5.0\Razor\Views\Employee\Details.cshtml.g.cs
