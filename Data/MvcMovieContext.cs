@@ -16,6 +16,8 @@ namespace dotnet.Data
         public DbSet<dotnet.Models.Movie> Movie { get; set; }
 
         public DbSet<Student> Student { get; set; }
+        public DbSet<KhachHang> khachHangs { get; set; }
+        public DbSet<HoaDon> hoaDons { get; set; }
 
         public DbSet<Person> People { get; set; }
 
