@@ -182,11 +182,6 @@ C:\Users\KHIEU LOAN\Desktop\dotnet\obj\Debug\net5.0\Razor\Views\Product\Delete.c
 C:\Users\KHIEU LOAN\Desktop\dotnet\obj\Debug\net5.0\Razor\Views\Product\Details.cshtml.g.cs
 C:\Users\KHIEU LOAN\Desktop\dotnet\obj\Debug\net5.0\Razor\Views\Product\Edit.cshtml.g.cs
 C:\Users\KHIEU LOAN\Desktop\dotnet\obj\Debug\net5.0\Razor\Views\Product\Index.cshtml.g.cs
-C:\Users\KHIEU LOAN\Desktop\dotnet\obj\Debug\net5.0\Razor\Views\Person\Create.cshtml.g.cs
-C:\Users\KHIEU LOAN\Desktop\dotnet\obj\Debug\net5.0\Razor\Views\Person\Delete.cshtml.g.cs
-C:\Users\KHIEU LOAN\Desktop\dotnet\obj\Debug\net5.0\Razor\Views\Person\Details.cshtml.g.cs
-C:\Users\KHIEU LOAN\Desktop\dotnet\obj\Debug\net5.0\Razor\Views\Person\Edit.cshtml.g.cs
-C:\Users\KHIEU LOAN\Desktop\dotnet\obj\Debug\net5.0\Razor\Views\Person\Index.cshtml.g.cs
 C:\Users\KHIEU LOAN\Desktop\dotnet\obj\Debug\net5.0\Razor\Views\Student\Create.cshtml.g.cs
 C:\Users\KHIEU LOAN\Desktop\dotnet\obj\Debug\net5.0\Razor\Views\Student\Delete.cshtml.g.cs
 C:\Users\KHIEU LOAN\Desktop\dotnet\obj\Debug\net5.0\Razor\Views\Student\Details.cshtml.g.cs
@@ -202,3 +197,13 @@ C:\Users\KHIEU LOAN\Desktop\dotnet\obj\Debug\net5.0\Razor\Views\HoaDon\Delete.cs
 C:\Users\KHIEU LOAN\Desktop\dotnet\obj\Debug\net5.0\Razor\Views\HoaDon\Details.cshtml.g.cs
 C:\Users\KHIEU LOAN\Desktop\dotnet\obj\Debug\net5.0\Razor\Views\HoaDon\Edit.cshtml.g.cs
 C:\Users\KHIEU LOAN\Desktop\dotnet\obj\Debug\net5.0\Razor\Views\HoaDon\Index.cshtml.g.cs
+C:\Users\KHIEU LOAN\Desktop\dotnet\obj\Debug\net5.0\Razor\Views\Person\Create.cshtml.g.cs
+C:\Users\KHIEU LOAN\Desktop\dotnet\obj\Debug\net5.0\Razor\Views\Person\Delete.cshtml.g.cs
+C:\Users\KHIEU LOAN\Desktop\dotnet\obj\Debug\net5.0\Razor\Views\Person\Details.cshtml.g.cs
+C:\Users\KHIEU LOAN\Desktop\dotnet\obj\Debug\net5.0\Razor\Views\Person\Edit.cshtml.g.cs
+C:\Users\KHIEU LOAN\Desktop\dotnet\obj\Debug\net5.0\Razor\Views\Person\Index.cshtml.g.cs
+C:\Users\KHIEU LOAN\Desktop\dotnet\obj\Debug\net5.0\Razor\Views\NhanVien\Create.cshtml.g.cs
+C:\Users\KHIEU LOAN\Desktop\dotnet\obj\Debug\net5.0\Razor\Views\NhanVien\Delete.cshtml.g.cs
+C:\Users\KHIEU LOAN\Desktop\dotnet\obj\Debug\net5.0\Razor\Views\NhanVien\Details.cshtml.g.cs
+C:\Users\KHIEU LOAN\Desktop\dotnet\obj\Debug\net5.0\Razor\Views\NhanVien\Edit.cshtml.g.cs
+C:\Users\KHIEU LOAN\Desktop\dotnet\obj\Debug\net5.0\Razor\Views\NhanVien\Index.cshtml.g.cs

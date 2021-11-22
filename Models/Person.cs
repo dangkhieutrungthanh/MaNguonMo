@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 namespace dotnet.Models
@@ -11,6 +12,7 @@ namespace dotnet.Models
         public string PersonCode { get; set; }
         public string FullName { get; set; }
 
+        public ICollection<HoaDon> hoadons { get; set; }
 
     }
 }

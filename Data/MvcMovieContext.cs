@@ -24,5 +24,7 @@ namespace dotnet.Data
         public DbSet<dotnet.Models.Employee> Employee { get; set; }
 
         public DbSet<dotnet.Models.Product> Product { get; set; }
+
+        public DbSet<dotnet.Models.NhanVien> NhanVien { get; set; }
     }
 }

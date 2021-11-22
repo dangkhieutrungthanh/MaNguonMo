@@ -15669,6 +15669,16 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Users\\KHIEU LOAN\\Desktop\\dotnet\\Views\\NhanVien\\Index.cshtml",
+      "TargetPath": "Views\\NhanVien\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\KHIEU LOAN\\Desktop\\dotnet\\Views\\NhanVien\\Delete.cshtml",
+      "TargetPath": "Views\\NhanVien\\Delete.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\KHIEU LOAN\\Desktop\\dotnet\\Views\\Student\\Delete.cshtml",
       "TargetPath": "Views\\Student\\Delete.cshtml",
       "FileKind": "mvc"
@@ -15724,6 +15734,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Users\\KHIEU LOAN\\Desktop\\dotnet\\Views\\NhanVien\\Details.cshtml",
+      "TargetPath": "Views\\NhanVien\\Details.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\KHIEU LOAN\\Desktop\\dotnet\\Views\\Employee\\Delete.cshtml",
       "TargetPath": "Views\\Employee\\Delete.cshtml",
       "FileKind": "mvc"
@@ -15741,6 +15756,11 @@
     {
       "FilePath": "c:\\Users\\KHIEU LOAN\\Desktop\\dotnet\\Views\\Person\\Index.cshtml",
       "TargetPath": "Views\\Person\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\KHIEU LOAN\\Desktop\\dotnet\\Views\\NhanVien\\Edit.cshtml",
+      "TargetPath": "Views\\NhanVien\\Edit.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -15811,6 +15831,11 @@
     {
       "FilePath": "c:\\Users\\KHIEU LOAN\\Desktop\\dotnet\\Views\\HoaDon\\Delete.cshtml",
       "TargetPath": "Views\\HoaDon\\Delete.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\KHIEU LOAN\\Desktop\\dotnet\\Views\\NhanVien\\Create.cshtml",
+      "TargetPath": "Views\\NhanVien\\Create.cshtml",
       "FileKind": "mvc"
     },
     {

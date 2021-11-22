@@ -41,9 +41,14 @@ namespace dotnet.Migrations
                     b.Property<int>("KhachHangId")
                         .HasColumnType("INTEGER");
 
+                    b.Property<int>("PersonId")
+                        .HasColumnType("INTEGER");
+
                     b.HasKey("Id");
 
                     b.HasIndex("KhachHangId");
+
+                    b.HasIndex("PersonId");
 
                     b.ToTable("HoaDon");
                 });
@@ -121,6 +126,22 @@ namespace dotnet.Migrations
                     b.ToTable("Product");
                 });
 
+            modelBuilder.Entity("dotnet.Models.NhanVien", b =>
+                {
+                    b.HasBaseType("dotnet.Models.Person");
+
+                    b.Property<string>("Address")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("MyProperty")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("PhoneNumber")
+                        .HasColumnType("TEXT");
+
+                    b.ToTable("NhanVien");
+                });
+
             modelBuilder.Entity("dotnet.Models.Student", b =>
                 {
                     b.HasBaseType("dotnet.Models.Person");
@@ -145,7 +166,24 @@ namespace dotnet.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("dotnet.Models.Person", "people")
+                        .WithMany("hoadons")
+                        .HasForeignKey("PersonId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.Navigation("khachHangs");
+
+                    b.Navigation("people");
+                });
+
+            modelBuilder.Entity("dotnet.Models.NhanVien", b =>
+                {
+                    b.HasOne("dotnet.Models.Person", null)
+                        .WithOne()
+                        .HasForeignKey("dotnet.Models.NhanVien", "PersonId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("dotnet.Models.Student", b =>
@@ -158,6 +196,11 @@ namespace dotnet.Migrations
                 });
 
             modelBuilder.Entity("dotnet.Models.KhachHang", b =>
+                {
+                    b.Navigation("hoadons");
+                });
+
+            modelBuilder.Entity("dotnet.Models.Person", b =>
                 {
                     b.Navigation("hoadons");
                 });

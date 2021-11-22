@@ -10,23 +10,22 @@ using dotnet.Models;
 
 namespace dotnet.Controllers
 {
-    public class HoaDonController : Controller
+    public class NhanVienController : Controller
     {
         private readonly MvcMovieContext _context;
 
-        public HoaDonController(MvcMovieContext context)
+        public NhanVienController(MvcMovieContext context)
         {
             _context = context;
         }
 
-        // GET: HoaDon
+        // GET: NhanVien
         public async Task<IActionResult> Index()
         {
-            var mvcMovieContext = _context.hoaDons.Include(h => h.khachHangs).Include(h => h.people);
-            return View(await mvcMovieContext.ToListAsync());
+            return View(await _context.NhanVien.ToListAsync());
         }
 
-        // GET: HoaDon/Details/5
+        // GET: NhanVien/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -34,45 +33,39 @@ namespace dotnet.Controllers
                 return NotFound();
             }
 
-            var hoaDon = await _context.hoaDons
-                .Include(h => h.khachHangs)
-                .Include(h => h.people)
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (hoaDon == null)
+            var nhanVien = await _context.NhanVien
+                .FirstOrDefaultAsync(m => m.PersonId == id);
+            if (nhanVien == null)
             {
                 return NotFound();
             }
 
-            return View(hoaDon);
+            return View(nhanVien);
         }
 
-        // GET: HoaDon/Create
+        // GET: NhanVien/Create
         public IActionResult Create()
         {
-            ViewData["KhachHangId"] = new SelectList(_context.khachHangs, "KhachHangId", "KhachHangId");
-            ViewData["PersonId"] = new SelectList(_context.People, "PersonId", "PersonId");
             return View();
         }
 
-        // POST: HoaDon/Create
+        // POST: NhanVien/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,KhachHangId,PersonId")] HoaDon hoaDon)
+        public async Task<IActionResult> Create([Bind("Address,PhoneNumber,MyProperty,PersonId,PersonCode,FullName")] NhanVien nhanVien)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(hoaDon);
+                _context.Add(nhanVien);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["KhachHangId"] = new SelectList(_context.khachHangs, "KhachHangId", "KhachHangId", hoaDon.KhachHangId);
-            ViewData["PersonId"] = new SelectList(_context.People, "PersonId", "PersonId", hoaDon.PersonId);
-            return View(hoaDon);
+            return View(nhanVien);
         }
 
-        // GET: HoaDon/Edit/5
+        // GET: NhanVien/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -80,24 +73,22 @@ namespace dotnet.Controllers
                 return NotFound();
             }
 
-            var hoaDon = await _context.hoaDons.FindAsync(id);
-            if (hoaDon == null)
+            var nhanVien = await _context.NhanVien.FindAsync(id);
+            if (nhanVien == null)
             {
                 return NotFound();
             }
-            ViewData["KhachHangId"] = new SelectList(_context.khachHangs, "KhachHangId", "KhachHangId", hoaDon.KhachHangId);
-            ViewData["PersonId"] = new SelectList(_context.People, "PersonId", "PersonId", hoaDon.PersonId);
-            return View(hoaDon);
+            return View(nhanVien);
         }
 
-        // POST: HoaDon/Edit/5
+        // POST: NhanVien/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,KhachHangId,PersonId")] HoaDon hoaDon)
+        public async Task<IActionResult> Edit(int id, [Bind("Address,PhoneNumber,MyProperty,PersonId,PersonCode,FullName")] NhanVien nhanVien)
         {
-            if (id != hoaDon.Id)
+            if (id != nhanVien.PersonId)
             {
                 return NotFound();
             }
@@ -106,12 +97,12 @@ namespace dotnet.Controllers
             {
                 try
                 {
-                    _context.Update(hoaDon);
+                    _context.Update(nhanVien);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!HoaDonExists(hoaDon.Id))
+                    if (!NhanVienExists(nhanVien.PersonId))
                     {
                         return NotFound();
                     }
@@ -122,12 +113,10 @@ namespace dotnet.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["KhachHangId"] = new SelectList(_context.khachHangs, "KhachHangId", "KhachHangId", hoaDon.KhachHangId);
-            ViewData["PersonId"] = new SelectList(_context.People, "PersonId", "PersonId", hoaDon.PersonId);
-            return View(hoaDon);
+            return View(nhanVien);
         }
 
-        // GET: HoaDon/Delete/5
+        // GET: NhanVien/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -135,32 +124,30 @@ namespace dotnet.Controllers
                 return NotFound();
             }
 
-            var hoaDon = await _context.hoaDons
-                .Include(h => h.khachHangs)
-                .Include(h => h.people)
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (hoaDon == null)
+            var nhanVien = await _context.NhanVien
+                .FirstOrDefaultAsync(m => m.PersonId == id);
+            if (nhanVien == null)
             {
                 return NotFound();
             }
 
-            return View(hoaDon);
+            return View(nhanVien);
         }
 
-        // POST: HoaDon/Delete/5
+        // POST: NhanVien/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var hoaDon = await _context.hoaDons.FindAsync(id);
-            _context.hoaDons.Remove(hoaDon);
+            var nhanVien = await _context.NhanVien.FindAsync(id);
+            _context.NhanVien.Remove(nhanVien);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool HoaDonExists(int id)
+        private bool NhanVienExists(int id)
         {
-            return _context.hoaDons.Any(e => e.Id == id);
+            return _context.NhanVien.Any(e => e.PersonId == id);
         }
     }
 }

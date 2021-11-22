@@ -9,8 +9,8 @@ using dotnet.Data;
 namespace dotnet.Migrations
 {
     [DbContext(typeof(MvcMovieContext))]
-    [Migration("20211117071936_Creat_Table_HoaDon")]
-    partial class Creat_Table_HoaDon
+    [Migration("20211122074447_Create_Table")]
+    partial class Create_Table
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -43,9 +43,14 @@ namespace dotnet.Migrations
                     b.Property<int>("KhachHangId")
                         .HasColumnType("INTEGER");
 
+                    b.Property<int>("PersonId")
+                        .HasColumnType("INTEGER");
+
                     b.HasKey("Id");
 
                     b.HasIndex("KhachHangId");
+
+                    b.HasIndex("PersonId");
 
                     b.ToTable("HoaDon");
                 });
@@ -147,7 +152,15 @@ namespace dotnet.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("dotnet.Models.Person", "people")
+                        .WithMany("hoadons")
+                        .HasForeignKey("PersonId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.Navigation("khachHangs");
+
+                    b.Navigation("people");
                 });
 
             modelBuilder.Entity("dotnet.Models.Student", b =>
@@ -160,6 +173,11 @@ namespace dotnet.Migrations
                 });
 
             modelBuilder.Entity("dotnet.Models.KhachHang", b =>
+                {
+                    b.Navigation("hoadons");
+                });
+
+            modelBuilder.Entity("dotnet.Models.Person", b =>
                 {
                     b.Navigation("hoadons");
                 });
