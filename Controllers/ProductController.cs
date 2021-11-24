@@ -31,11 +31,10 @@ namespace dotnet.Controllers
             {
                 pdt = pdt.Where(s => s.ProductName.ToLower().Contains(searchString.ToLower()));
             }
-            if (loaidachon != 0)
+            if (loaidachon >= 0)
             {
                 pdt = pdt.Where(x => x.Price == loaidachon);
             }
-
             var DM = new MovieGenreViewModel
             {
                 ds = new SelectList(await genreQuery.Distinct().ToListAsync()),

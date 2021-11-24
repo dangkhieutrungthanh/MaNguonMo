@@ -12,6 +12,7 @@ namespace dotnet.Models
         [Display(Name = "Tên sản phẩm")]
         public string ProductName { get; set; }
         [Display(Name = "Giá sản phẩm")]
+        [Column(TypeName = "decimal(18, 2)")]
         public double Price { get; set; }
 
     }
