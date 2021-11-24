@@ -20,9 +20,29 @@ namespace dotnet.Controllers
         }
 
         // GET: Movie
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string movieGenre, string searchString)
         {
-            return View(await _context.Movie.ToListAsync());
+            IQueryable<string> genreQuery = from m in _context.Movie
+                                            orderby m.Genre
+                                            select m.Genre;
+
+            var mv = from m in _context.Movie select m;
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                mv = mv.Where(s => s.Title.Contains(searchString));
+            }
+            if (!string.IsNullOrEmpty(movieGenre))
+            {
+                mv = mv.Where(x => x.Genre == movieGenre);
+            }
+
+            var movieGenreVM = new MovieGenreViewModel
+            {
+                Genres = new SelectList(await genreQuery.Distinct().ToListAsync()),
+                Movies = await mv.ToListAsync()
+            };
+
+            return View(movieGenreVM);
         }
 
         // GET: Movie/Details/5
@@ -56,12 +76,16 @@ namespace dotnet.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Title,ReleaseDate,Genre,Price")] Movie movie)
         {
-            if (ModelState.IsValid)
+            try
             {
-                _context.Add(movie);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                if (ModelState.IsValid)
+                {
+                    _context.Add(movie);
+                    await _context.SaveChangesAsync();
+                    return RedirectToAction(nameof(Index));
+                }
             }
+            catch (Exception e) { ModelState.AddModelError("", "" + e); }
             return View(movie);
         }
 

@@ -13,7 +13,7 @@ namespace dotnet.Data
         {
         }
 
-        public DbSet<dotnet.Models.Movie> Movie { get; set; }
+        public DbSet<Movie> Movie { get; set; }
 
         public DbSet<Student> Student { get; set; }
         public DbSet<KhachHang> khachHangs { get; set; }
@@ -21,10 +21,10 @@ namespace dotnet.Data
 
         public DbSet<Person> People { get; set; }
 
-        public DbSet<dotnet.Models.Employee> Employee { get; set; }
+        public DbSet<Employee> Employee { get; set; }
 
-        public DbSet<dotnet.Models.Product> Product { get; set; }
+        public DbSet<Product> Product { get; set; }
 
-        public DbSet<dotnet.Models.NhanVien> NhanVien { get; set; }
+        public DbSet<NhanVien> NhanVien { get; set; }
     }
 }
