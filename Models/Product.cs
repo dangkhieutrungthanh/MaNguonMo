@@ -12,8 +12,14 @@ namespace dotnet.Models
         [Display(Name = "Tên sản phẩm")]
         public string ProductName { get; set; }
         [Display(Name = "Giá sản phẩm")]
-        [Column(TypeName = "decimal(18, 2)")]
-        public double Price { get; set; }
+
+        private double _Price;
+        [DataType((DataType.Currency))]
+        public double Price
+        {
+            get { return _Price; }
+            set { if (value > 0) _Price = value; }
+        }
 
     }
 }
