@@ -9,8 +9,8 @@ using dotnet.Data;
 namespace dotnet.Migrations
 {
     [DbContext(typeof(MvcMovieContext))]
-    [Migration("20211122075155_abc")]
-    partial class abc
+    [Migration("20211124084651_Create_Table")]
+    partial class Create_Table
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -79,7 +79,7 @@ namespace dotnet.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<decimal>("Price")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("decimal(18, 2)");
 
                     b.Property<DateTime>("ReleaseDate")
                         .HasColumnType("TEXT");
@@ -114,14 +114,11 @@ namespace dotnet.Migrations
                     b.Property<string>("ProductId")
                         .HasColumnType("TEXT");
 
+                    b.Property<double>("Price")
+                        .HasColumnType("REAL");
+
                     b.Property<string>("ProductName")
                         .HasColumnType("TEXT");
-
-                    b.Property<int>("Quantity")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<double>("UnitPrice")
-                        .HasColumnType("REAL");
 
                     b.HasKey("ProductId");
 

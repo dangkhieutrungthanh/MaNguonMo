@@ -77,7 +77,7 @@ namespace dotnet.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<decimal>("Price")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("decimal(18, 2)");
 
                     b.Property<DateTime>("ReleaseDate")
                         .HasColumnType("TEXT");
@@ -112,14 +112,11 @@ namespace dotnet.Migrations
                     b.Property<string>("ProductId")
                         .HasColumnType("TEXT");
 
+                    b.Property<double>("Price")
+                        .HasColumnType("REAL");
+
                     b.Property<string>("ProductName")
                         .HasColumnType("TEXT");
-
-                    b.Property<int>("Quantity")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<double>("UnitPrice")
-                        .HasColumnType("REAL");
 
                     b.HasKey("ProductId");
 

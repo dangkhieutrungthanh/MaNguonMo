@@ -20,7 +20,7 @@ namespace dotnet.Controllers
         }
 
         // GET: Movie
-        public async Task<IActionResult> Index(string movieGenre, string searchString)
+        public async Task<IActionResult> Index(string loaidachon, string searchString)
         {
             IQueryable<string> genreQuery = from m in _context.Movie
                                             orderby m.Genre
@@ -29,16 +29,16 @@ namespace dotnet.Controllers
             var mv = from m in _context.Movie select m;
             if (!String.IsNullOrEmpty(searchString))
             {
-                mv = mv.Where(s => s.Title.Contains(searchString));
+                mv = mv.Where(s => s.Title.ToLower().Contains(searchString.ToLower()));
             }
-            if (!string.IsNullOrEmpty(movieGenre))
+            if (!string.IsNullOrEmpty(loaidachon))
             {
-                mv = mv.Where(x => x.Genre == movieGenre);
+                mv = mv.Where(x => x.Genre == loaidachon);
             }
 
             var movieGenreVM = new MovieGenreViewModel
             {
-                Genres = new SelectList(await genreQuery.Distinct().ToListAsync()),
+                ds = new SelectList(await genreQuery.Distinct().ToListAsync()),
                 Movies = await mv.ToListAsync()
             };
 

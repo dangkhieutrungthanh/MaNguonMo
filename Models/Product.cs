@@ -12,10 +12,7 @@ namespace dotnet.Models
         [Display(Name = "Tên sản phẩm")]
         public string ProductName { get; set; }
         [Display(Name = "Giá sản phẩm")]
-        public double UnitPrice { get; set; }
-        [Display(Name = "số lượng")]
-        public int Quantity { get; set; }
-
+        public double Price { get; set; }
 
     }
 }

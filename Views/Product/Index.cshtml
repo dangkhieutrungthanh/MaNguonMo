@@ -1,5 +1,5 @@
-@model IEnumerable<dotnet.Models.Product>
-
+@* @model IEnumerable<dotnet.Models.Product> *@
+@model dotnet.Models.MovieGenreViewModel
 @{
     ViewData["Title"] = "Index";
 }
@@ -9,33 +9,38 @@
 <p>
     <a asp-action="Create">Tạo mới</a>
 </p>
+<form asp-controller="Product" asp-action="Index" method="get">
+    <p>
+
+        <select asp-for="loaidachon" asp-items="Model.ds">
+            <option value="">All</option>
+        </select>
+
+        Title: <input type="text" asp-for="SearchString" />
+        <input type="submit" value="Lọc" />
+    </p>
+</form>
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.ProductName)
+                @Html.DisplayNameFor(model => model.Products[0].ProductName)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.UnitPrice)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Quantity)
+                @Html.DisplayNameFor(model => model.Products[0].Price)
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-        @foreach (var item in Model)
+        @foreach (var item in Model.Products)
         {
             <tr>
                 <td>
                     @Html.DisplayFor(modelItem => item.ProductName)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.UnitPrice)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Quantity)
+                    @Html.DisplayFor(modelItem => item.Price)
                 </td>
                 <td>
                     <a asp-action="Edit" asp-route-id="@item.ProductId">Chỉnh sửa</a> |
