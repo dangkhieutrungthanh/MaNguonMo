@@ -15,6 +15,7 @@ namespace dotnet.Models
 
         private double _Price;
         [DataType((DataType.Currency))]
+        [Display(Name = "Giá")]
         public double Price
         {
             get { return _Price; }
