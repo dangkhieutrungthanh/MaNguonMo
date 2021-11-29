@@ -64,6 +64,13 @@ namespace dotnet.Controllers
         // GET: Product/Create
         public IActionResult Create()
         {
+            var model = _context.Product.ToList();
+            if (model.Count == 0) ViewBag.id = "SP01";
+            else
+            {
+                var id = model.OrderByDescending(s => s.ProductId).FirstOrDefault().ProductId;
+                ViewBag.id = ProcessString.AutoKey(id);
+            }
             return View();
         }
 
@@ -74,12 +81,16 @@ namespace dotnet.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("ProductId,ProductName,Price")] Product product)
         {
-            if (ModelState.IsValid)
+            try
             {
-                _context.Add(product);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                if (ModelState.IsValid)
+                {
+                    _context.Add(product);
+                    await _context.SaveChangesAsync();
+                    return RedirectToAction(nameof(Index));
+                }
             }
+            catch (Exception e) { ModelState.AddModelError("", "Phát sinh lỗi " + e); }
             return View(product);
         }
 

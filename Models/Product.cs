@@ -11,11 +11,8 @@ namespace dotnet.Models
         public string ProductId { get; set; }
         [Display(Name = "Tên sản phẩm")]
         public string ProductName { get; set; }
-        [Display(Name = "Giá sản phẩm")]
-
         private double _Price;
-        [DataType((DataType.Currency))]
-        [Display(Name = "Giá")]
+        [DataType(DataType.Currency), Display(Name = "Giá")]
         public double Price
         {
             get { return _Price; }
