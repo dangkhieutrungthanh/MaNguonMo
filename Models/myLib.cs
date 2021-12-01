@@ -17,15 +17,15 @@ namespace dotnet.Models
     {
         public static string AutoKey(string id)
         {
-            string newKey, NumPart, StrPart, them = null;
+            string newKey, NumPart, StrPart;
             NumPart = Regex.Match(id, @"\d+").Value;
             StrPart = Regex.Match(id, @"\D+").Value;
             int newNum = Convert.ToInt32(NumPart) + 1;
-            for (int i = 0; i < StrPart.Length - newNum.ToString().Length; i++)
+            for (int i = 0; i < NumPart.Length - newNum.ToString().Length; i++)
             {
-                them += "0";
+                StrPart += "0";
             }
-            return newKey = StrPart + them + newNum;
+            return newKey = StrPart + newNum;
         }
     }
 }

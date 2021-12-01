@@ -18,6 +18,10 @@
             <th>
                 @Html.DisplayNameFor(model => model.EmployeePhoneNumber)
             </th>
+                        <th>
+                @Html.DisplayNameFor(model => model.EmployeeAddress)
+            </th>
+
             <th></th>
         </tr>
     </thead>
@@ -30,6 +34,9 @@
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.EmployeePhoneNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EmployeeAddress)
                 </td>
                 <td>
                     <a asp-action="Edit" asp-route-id="@item.EmployeeId">Chỉnh sửa</a> |

@@ -46,6 +46,13 @@ namespace dotnet.Controllers
         // GET: Employee/Create
         public IActionResult Create()
         {
+            var model = _context.Employee.ToList();
+            if (model.Count == 0) ViewBag.id = "NV001";
+            else
+            {
+                var id = model.OrderByDescending(s => s.EmployeeId).FirstOrDefault().EmployeeId;
+                ViewBag.id = ProcessString.AutoKey(id);
+            }
             return View();
         }
 
@@ -54,7 +61,7 @@ namespace dotnet.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("EmployeeId,EmployeeName,EmployeePhoneNumber")] Employee employee)
+        public async Task<IActionResult> Create([Bind("EmployeeId,EmployeeName,EmployeePhoneNumber,EmployeeAddress")] Employee employee)
         {
             if (ModelState.IsValid)
             {
@@ -86,7 +93,7 @@ namespace dotnet.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("EmployeeId,EmployeeName,EmployeePhoneNumber")] Employee employee)
+        public async Task<IActionResult> Edit(string id, [Bind("EmployeeId,EmployeeName,EmployeePhoneNumber,EmployeeAddress")] Employee employee)
         {
             if (id != employee.EmployeeId)
             {

@@ -65,7 +65,7 @@ namespace dotnet.Controllers
         public IActionResult Create()
         {
             var model = _context.Product.ToList();
-            if (model.Count == 0) ViewBag.id = "SP01";
+            if (model.Count == 0) ViewBag.id = "SP001";
             else
             {
                 var id = model.OrderByDescending(s => s.ProductId).FirstOrDefault().ProductId;
