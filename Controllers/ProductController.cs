@@ -91,7 +91,7 @@ namespace dotnet.Controllers
                 }
             }
             catch (Exception e) { ModelState.AddModelError("", "Phát sinh lỗi " + e); }
-            return View(product);
+            return View();
         }
 
         // GET: Product/Edit/5

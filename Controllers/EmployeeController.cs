@@ -7,16 +7,24 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using dotnet.Data;
 using dotnet.Models;
+using dotnet.Models.Process;
+using Microsoft.AspNetCore.Http;
+using System.IO;
+using Microsoft.Extensions.Configuration;
+using System.Data;
+using System.Data.SqlClient;
 
 namespace dotnet.Controllers
 {
     public class EmployeeController : Controller
     {
         private readonly MvcMovieContext _context;
-
-        public EmployeeController(MvcMovieContext context)
+        private readonly IConfiguration _Configuration;
+        private ExcelProcess _excelPro = new ExcelProcess();
+        public EmployeeController(MvcMovieContext context, IConfiguration Configuration)
         {
             _context = context;
+            _Configuration = Configuration;
         }
 
         // GET: Employee
@@ -93,34 +101,65 @@ namespace dotnet.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("EmployeeId,EmployeeName,EmployeePhoneNumber,EmployeeAddress")] Employee employee)
+        public async Task<IActionResult> Edit(string id, [Bind("EmployeeId,EmployeeName,EmployeePhoneNumber,EmployeeAddress")] Employee employee, IFormFile file)
         {
-            if (id != employee.EmployeeId)
+            if (file != null)
             {
-                return NotFound();
-            }
+                string fileExtension = Path.GetExtension(file.FileName);
+                if (fileExtension != ".xls" && fileExtension != ".xlsx")
+                {
+                    ModelState.AddModelError("", "Please choose excel file to upload!");
+                }
+                else
+                {
+                    //rename file when upload to server
+                    //tao duong dan /Uploads/Excels de luu file upload len server
+                    var fileName = "Ten file muon luu";
+                    var filePath = Path.Combine(Directory.GetCurrentDirectory() + "/Uploads/Excels", fileName + fileExtension);
+                    var fileLocation = new FileInfo(filePath).ToString();
 
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    _context.Update(employee);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!EmployeeExists(employee.EmployeeId))
+                    if (ModelState.IsValid)
                     {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
+                        //upload file to server
+                        if (file.Length > 0)
+                        {
+                            _context.Add(employee);
+                            await _context.SaveChangesAsync();
+                            using (var stream = new FileStream(filePath, FileMode.Create))
+                            {
+                                //save file to server
+                                await file.CopyToAsync(stream);
+                                //read data from file and write to database
+                                //_excelPro la doi tuong xu ly file excel ExcelProcess
+                                var dt = _excelPro.ExcelToDataTable(fileLocation);
+                                WriteInformaticResult(dt);
+                                //ghi du lieu datatable vao database
+
+                            }
+                            return RedirectToAction(nameof(Index));
+                        }
                     }
                 }
-                return RedirectToAction(nameof(Index));
             }
-            return View(employee);
+            return View(file);
+        }
+        private int WriteInformaticResult(DataTable dt)
+        {
+            try
+            {
+                var con = _Configuration.GetConnectionString("MvcMovieContext");
+                SqlBulkCopy bulkcopy = new SqlBulkCopy(con);
+                bulkcopy.DestinationTableName = "Employee";
+                bulkcopy.ColumnMappings.Add(0, "EmployeeId");
+                bulkcopy.ColumnMappings.Add(1, "EmployeeName");
+                bulkcopy.ColumnMappings.Add(2, "EmployeePhoneNumber");
+                bulkcopy.ColumnMappings.Add(3, "EmployeeAddress");
+            }
+            catch
+            {
+                return 0;
+            }
+            return dt.Rows.Count;
         }
 
         // GET: Employee/Delete/5

@@ -26,7 +26,7 @@ namespace dotnet.Controllers
         }
 
         // GET: KhachHang/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public async Task<IActionResult> Details(string id)
         {
             if (id == null)
             {
@@ -46,6 +46,13 @@ namespace dotnet.Controllers
         // GET: KhachHang/Create
         public IActionResult Create()
         {
+            var model = _context.khachHangs.ToList();
+            if (model.Count == 0) ViewBag.id = "KH001";
+            else
+            {
+                var id = model.OrderByDescending(s => s.KhachHangId).FirstOrDefault().KhachHangId;
+                ViewBag.id = ProcessString.AutoKey(id);
+            }
             return View();
         }
 
@@ -66,7 +73,7 @@ namespace dotnet.Controllers
         }
 
         // GET: KhachHang/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+        public async Task<IActionResult> Edit(string id)
         {
             if (id == null)
             {
@@ -86,7 +93,7 @@ namespace dotnet.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("KhachHangId,TenKhachHang")] KhachHang khachHang)
+        public async Task<IActionResult> Edit(string id, [Bind("KhachHangId,TenKhachHang")] KhachHang khachHang)
         {
             if (id != khachHang.KhachHangId)
             {
@@ -117,7 +124,7 @@ namespace dotnet.Controllers
         }
 
         // GET: KhachHang/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        public async Task<IActionResult> Delete(string id)
         {
             if (id == null)
             {
@@ -137,7 +144,7 @@ namespace dotnet.Controllers
         // POST: KhachHang/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public async Task<IActionResult> DeleteConfirmed(string id)
         {
             var khachHang = await _context.khachHangs.FindAsync(id);
             _context.khachHangs.Remove(khachHang);
@@ -145,7 +152,7 @@ namespace dotnet.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        private bool KhachHangExists(int id)
+        private bool KhachHangExists(string id)
         {
             return _context.khachHangs.Any(e => e.KhachHangId == id);
         }

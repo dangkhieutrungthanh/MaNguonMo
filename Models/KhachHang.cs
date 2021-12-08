@@ -8,7 +8,7 @@ namespace dotnet.Models
     public class KhachHang
     {
         [Key]
-        public int KhachHangId { get; set; }
+        public string KhachHangId { get; set; }
         public string TenKhachHang { get; set; }
         public ICollection<HoaDon> hoadons { get; set; }
     }

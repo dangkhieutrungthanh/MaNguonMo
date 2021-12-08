@@ -13,23 +13,30 @@
     <thead>
         <tr>
             <th>
+                @Html.DisplayNameFor(model => model.KhachHangId)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.TenKhachHang)
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.TenKhachHang)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.KhachHangId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.KhachHangId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.KhachHangId">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.KhachHangId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TenKhachHang)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.KhachHangId">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.KhachHangId">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.KhachHangId">Delete</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>

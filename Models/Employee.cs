@@ -9,7 +9,7 @@ namespace dotnet.Models
         [Key]
         [Display(Name = "ID nhân viên")]
         public String EmployeeId { get; set; }
-        [StringLength(60, MinimumLength = 2), Required]
+        [StringLength(60, MinimumLength = 2)]
         [Display(Name = "Tên nhân viên")]
         public string EmployeeName { get; set; }
         [Display(Name = "Số điện thoại"), DataType(DataType.PhoneNumber)]
